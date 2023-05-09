@@ -12,6 +12,8 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(cors())
 
+const port = process.env.PORT || 3001
+
 app.use("/", router);
 
-app.listen(8080, () => {console.log('listening on 8080')})
+app.listen(port, () => {console.log('listening on 3001')})
