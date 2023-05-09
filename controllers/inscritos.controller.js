@@ -32,7 +32,7 @@ const createInscrito = async (req, res) => {
     
     const inscrito = await inscritoService.createService(req.body)
     if (!inscrito) {
-        return res.status(400).send({ message: "Error creating inscrito" })
+        return res.status(400).send({ message: "Erro de criação de inscrito" })
     }
     res.status(200).send({
         message: 'Requisição completa',

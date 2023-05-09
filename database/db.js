@@ -2,9 +2,13 @@ const mongoose = require('mongoose')
 
 const connectDatabase = () => {
     console.log("Wait connecting to the database")
+    const dbcn = process.env.MONGO
+    if (!dbcn) {
+        throw new Error
+    }
 
     mongoose.connect(
-        "mongodb+srv://quartajovem:quartajo1@cluster0.q7d9olp.mongodb.net/?retryWrites=true&w=majority", {
+        dbcn, {
         useNewUrlParser: true,
         useUnifiedTopology: true
     })
