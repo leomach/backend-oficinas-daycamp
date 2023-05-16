@@ -26,7 +26,7 @@ const createInscrito = async (req, res) => {
 
     const inscritos = await inscritoService.findAllService()
     let inscritosOficina = inscritos.filter(inscrito => inscrito.oficina === oficina)
-    if (inscritosOficina.length === 1) {
+    if (inscritosOficina.length === 33) {
         return res.status(400).send({ message: "Não temos vagas para essa oficina..." })
     }
     
