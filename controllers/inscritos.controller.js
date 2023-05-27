@@ -28,19 +28,21 @@ const createInscrito = async (req, res) => {
     let inscritosOficina = inscritos.filter(inscrito => inscrito.oficina === oficina)
     if (inscritosOficina.length === 33 || inscritosOficina.length > 33) {
         return res.status(400).send({ message: "Não temos vagas para essa oficina..." })
+    } else {
+        const inscrito = await inscritoService.createService(req.body)
+        if (!inscrito) {
+            return res.status(400).send({ message: "Erro de criação de inscrito" })
+        } else {
+            res.status(200).send({
+                message: 'Requisição completa',
+                inscrito: {
+                    nome,
+                    oficina
+                }
+            })
+        }
     }
     
-    const inscrito = await inscritoService.createService(req.body)
-    if (!inscrito) {
-        return res.status(400).send({ message: "Erro de criação de inscrito" })
-    }
-    res.status(200).send({
-        message: 'Requisição completa',
-        inscrito: {
-            nome,
-            oficina
-        }
-    })
 }
 
 module.exports = {
